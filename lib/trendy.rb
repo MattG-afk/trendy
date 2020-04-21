@@ -1,6 +1,8 @@
-require "trendy/version"
+require_relative "./trendy/version"
+require_relative "./trendy/trends.rb"
+require_relative "./trendy/scraper.rb"
+require_relative "./trendy/cli.rb"
 
 module Trendy
-  class Error < StandardError; end
   # Your code goes here...
 end
