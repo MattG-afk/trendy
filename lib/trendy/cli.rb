@@ -3,19 +3,19 @@ class Trendy::CLI
         system("clear")
         sleep(1)
         puts "Welcome to Trendy gem!"
+        puts "You can see which Dubstep Musican's song is in the top 100."
         sleep(2)
-        puts "Please select a number 1-3 to start"  
-        puts "1.Trending ", "2.List", "3.Help", "4.Exit"
+        puts 'Please select "list" to start or "exit" to exit.'  
         input = nil
-        until input == "4"
+        until input == "exit"
             input = gets.strip
             case input
-            when "3"
-                puts "This is the help screen when you type a number you will be brought either into the trending screen which will show you the current top Artist and the most popular song for them or a list of the top 100 artists."
-            when "2"
+            when "list"
                 Trends.create
-            when "1"    
-                puts "Shows the Top trending artist."
+                Trends.list
+                puts "Which Musician's song would you like to see?"
+                input = gets.strip
+                Trends.find_by_name(input)
             when "exit"
                 exit
             end
