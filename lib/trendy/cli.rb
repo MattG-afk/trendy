@@ -19,7 +19,7 @@ class Trendy::CLI
                 input = gets.strip
                 trends = Trends.find_by_name(input)
                 if trends !=nil
-                     puts "The rank of #{trends.name} is #{trends.rank}"
+                     puts "The song #{trends.name} is rank #{trends.rank}"
                 elsif input == nil && input != "exit"
                     puts "incorrect command please try again."
                 elsif input == "list"
