@@ -16,6 +16,10 @@ class Trends
         @@all
     end
 
+    def self.clear
+        @@all = []
+    end
+
     def self.create
         html = Scraper.get_page
         ranking = html.css("ul.bucket-items.ec-bucket li")

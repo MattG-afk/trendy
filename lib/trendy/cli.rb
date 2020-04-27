@@ -7,7 +7,7 @@ class Trendy::CLI
         sleep(1)
         puts 'Please select "list" to start or "exit" to exit.'  
         input = nil
-        while input == "exit"
+        while input != "exit"
             input = gets.strip
             case input
             when "list"
@@ -16,18 +16,20 @@ class Trendy::CLI
                 Trends.list
                 
                 until input == "exit"
-                    input = gets.strip
-                    if trends !=nil
-                        puts "The rank of #{trends.name} is #{trends.rank}"
-                    elsif input == nil && input != "exit"
-                        puts "incorrect command please try again."
-                    elsif input == "list"
-                        Trends.list
-                        puts "Which Musician's song would you like to see?"
-                    end
+                input = gets.strip
+                trends = Trends.find_by_name(input)
+                if trends !=nil
+                     puts "The rank of #{trends.name} is #{trends.rank}"
+                elsif input == nil && input != "exit"
+                    puts "incorrect command please try again."
+                elsif input == "list"
+                    Trends.list
+                    puts "Which Musician's song would you like to see?"
+                end
                 end
             when "exit"
                 exit
+            else puts "That not a valid selection."
             end
         end
     end
